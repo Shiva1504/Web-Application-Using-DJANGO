@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login & Registration Form</title>
+  <link href="{% static 'style.css' %}" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>Login</header>
+      <form method="post">
+        {% csrf_token %}
+        {% comment %} <img class="mb-4" src="{% static 'signin.png' %}" alt="" width="72" height="72"> {% endcomment %}
+        {% if messages %}
+        {% for message in messages %}
+            <p class="p mb-3 font-weight-normal text" style="color: red;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+        <input id="username" class="username" type="text" placeholder="Enter your username">
+        <input id="password" class="password" type="password" placeholder="Enter your password">
+        <a href="#">Forgot password?</a>
+        <button class="button" type="submit">Login</button>
+      </form>
+      <div class="signup">
+        <span class="signup">Don't have an account?
+         <label for="check">Signup</label>
+        </span>
+      </div>
+    </div>
+    <div class="registration form">
+      <header>Signup</header>
+      <form action="#" method="post">
+        <input id="username" class="username" type="text" placeholder="Enter your username">
+        <input id="email" class="email" type="email" placeholder="Enter your email">
+        <input id="password1" class="password1" type="password" placeholder="Create a password">
+        <input id="password2" class="password2" type="password" placeholder="Confirm your password">
+        <input type="button" class="button" value="Signup">
+      </form>
+      <div class="signup">
+        <span class="signup">Already have an account?
+         <label for="check">Login</label>
+        </span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
