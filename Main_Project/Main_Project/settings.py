@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'accounts.middleware.NoCacheMiddleware',  
+
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -134,3 +136,19 @@ EMAIL_HOST_USER = 'temptesting33@gmail.com'
 EMAIL_HOST_PASSWORD = 'cqyz osdg frau cejy'  # Use app password for Gmail
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 EMAIL_USE_SSL = False  
+
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # End session when the browser is closed
+SESSION_COOKIE_AGE = 300  # Set session timeout to 5 minutes
+SESSION_SAVE_EVERY_REQUEST = True  # Refresh session expiration on every request
+
+# Disable browser caching
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    }
+}
+
+LOGIN_URL = '/login/'  # Change this to the correct path for your login view
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

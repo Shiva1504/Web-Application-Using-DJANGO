@@ -3,6 +3,7 @@ from django.views.generic.base import RedirectView
 from .views import login_view, home_view,register_view, logout_view, root_redirect_view
 from django.urls import path
 from . import views
+from django.urls import path
 
 urlpatterns = [
     path('', root_redirect_view, name='login'),  # Redirect root to login
@@ -14,4 +15,3 @@ urlpatterns = [
     path('verify-otp/', views.verify_otp, name='verify_otp'),
     path('reset-password/', views.reset_password, name='reset_password'),
 ]
-

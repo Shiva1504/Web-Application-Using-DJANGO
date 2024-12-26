@@ -1,14 +1,56 @@
-<form method="post">
-    {% csrf_token %}
-    <div class="form-group">
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% comment %} <link rel="icon" href="{% static 'signin.ico' %}"> {% endcomment %}
+
+    <title>Forgot Password</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'signinboot.css' %}" rel="stylesheet">
+
+
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'signin.css' %}" rel="stylesheet">
+
+    <style>
+      body {
+          background-image: url("{% static 'bg.jpg' %}");
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+      }
+       span{
+        color: white;
+      }
+      input{
+        margin-bottom:5px;
+      }
+  </style>
+</head>
+<body class="text-center">
+    <form class="form-signin" method="post">
+        {% csrf_token %}
+        <h1 class="h3 mb-3 font-weight-normal">Verify OTP</h1>
+        
         <input type="text" name="otp" class="form-control" placeholder="Enter OTP" required>
-    </div>
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endif %}
-    <button type="submit" class="btn btn-primary">Verify OTP</button>
-</form>
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Verify OTP</button>
+    </form>
+</body>
+</html>
